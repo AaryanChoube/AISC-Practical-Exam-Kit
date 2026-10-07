@@ -1,0 +1,31 @@
+PEAS FRAMEWORK FOR AI AGENTS (EXPERIMENT 1)
+=================================================
+PEAS stands for Performance Measure, Environment, Actuators, Sensors.
+
+1. AUTOMATED / SELF-DRIVING CAR:
+   - Performance: Safety, speed, legal drive, passenger comfort, fuel efficiency.
+   - Environment: Roads, other vehicles, pedestrians, weather, traffic signs.
+   - Actuators: Steering wheel, accelerator, brakes, horn, turn signals.
+   - Sensors: Cameras, LiDAR, radar, GPS, speedometer, odometer, engine sensors.
+   - Properties: Partially observable, Stochastic, Sequential, Dynamic, Continuous, Multi-agent.
+
+2. MEDICAL DIAGNOSIS SYSTEM:
+   - Performance: Healthy patient, minimized treatment costs, diagnostic accuracy.
+   - Environment: Patient symptoms, medical history, lab test results, hospital staff.
+   - Actuators: Screen display of diagnosis, recommended prescriptions, test orders.
+   - Sensors: Keyboard input of symptoms, lab test data feeds.
+   - Properties: Partially observable, Stochastic, Sequential, Dynamic, Continuous, Single-agent.
+
+3. VACUUM CLEANER AGENT:
+   - Performance: Cleanliness percentage, energy consumed, cleaning time, noise.
+   - Environment: Floor surface, dirt locations, obstacles, room boundaries.
+   - Actuators: Wheels, brush motor, suction motor.
+   - Sensors: Dirt sensor, bump/proximity sensor, infrared cliff sensor.
+   - Properties: Partially observable, Deterministic, Episodic/Sequential, Static, Discrete, Single-agent.
+
+4. PART-PICKING ROBOT:
+   - Performance: Percentage of parts in correct bins, speed.
+   - Environment: Conveyor belt with parts, bins.
+   - Actuators: Jointed robotic arm and gripper hand.
+   - Sensors: Camera, joint angle sensors.
+   - Properties: Partially observable, Stochastic, Episodic, Dynamic, Continuous, Single-agent.

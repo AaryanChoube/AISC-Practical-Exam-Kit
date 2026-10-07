@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AISC Practical & Viva Exam Kit - Aaryan Choube (24CE1045)</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --card: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #10b981;
+      --border: #475569;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    aside { width: 330px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; }
+    .brand { padding: 18px 20px; border-bottom: 1px solid var(--border); }
+    .brand h1 { font-size: 1.15rem; color: #38bdf8; font-weight: 700; }
+    .brand p { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+    
+    .nav-list { overflow-y: auto; flex: 1; padding: 12px 10px; }
+    .nav-item { display: block; width: 100%; text-align: left; padding: 10px 14px; margin-bottom: 4px; background: transparent; border: none; border-radius: 6px; color: var(--text-muted); font-size: 0.88rem; cursor: pointer; transition: all 0.2s; }
+    .nav-item:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+    .nav-item.active { background: var(--primary); color: #fff; font-weight: 600; }
+    
+    .quick-download { padding: 16px; border-top: 1px solid var(--border); }
+    .btn-zip { display: block; width: 100%; text-align: center; padding: 10px; background: var(--accent); color: #022c22; font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 0.9rem; transition: opacity 0.2s; }
+    .btn-zip:hover { opacity: 0.9; }
+
+    main { flex: 1; overflow-y: auto; padding: 30px 40px; display: flex; flex-direction: column; gap: 24px; }
+    .header-bar { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+    .header-bar h2 { font-size: 1.6rem; color: #fff; }
+    .header-bar p { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+    
+    .panel { display: none; flex-direction: column; gap: 24px; }
+    .panel.active { display: flex; }
+    
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 22px; }
+    .card h3 { font-size: 1.15rem; color: #38bdf8; margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; }
+    
+    .code-box { position: relative; margin-top: 10px; margin-bottom: 16px; }
+    pre { background: #0b1120; padding: 16px; border-radius: 6px; overflow-x: auto; font-family: "Consolas", monospace; font-size: 0.85rem; color: #e2e8f0; border: 1px solid #1e293b; max-height: 440px; }
+    .copy-btn { position: absolute; top: 10px; right: 10px; padding: 6px 12px; font-size: 0.75rem; font-weight: bold; background: var(--primary); color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    .copy-btn:hover { background: var(--primary-dark); }
+    
+    .badge { display: inline-block; padding: 3px 8px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <div class="brand">
+      <h1>🧠 AISC Exam Kit</h1>
+      <p>AI, Soft Computing, Neural Nets & Fuzzy</p>
+      <p style="font-size: 0.75rem; color: #38bdf8; margin-top: 2px;">Batch A/A1 • 24CE1045 Aaryan</p>
+    </div>
+    <div class="nav-list">
+      <button class="nav-item active" onclick="showTab('tab-viva')">🌟 Master Viva Guide (25 Q&A)</button>
+      <button class="nav-item" onclick="showTab('tab-e1')">Exp 1: PEAS Description</button>
+      <button class="nav-item" onclick="showTab('tab-e2')">Exp 2: Water Jug Problem</button>
+      <button class="nav-item" onclick="showTab('tab-e3')">Exp 3: Tic-Tac-Toe Minimax</button>
+      <button class="nav-item" onclick="showTab('tab-e5')">Exp 5: A* Heuristic Search</button>
+      <button class="nav-item" onclick="showTab('tab-e6')">Exp 6: PROLOG Logic Rules</button>
+      <button class="nav-item" onclick="showTab('tab-e7')">Exp 7: Fuzzy Set Operations</button>
+      <button class="nav-item" onclick="showTab('tab-e10')">Exp 10: Perceptron Neural Net</button>
+    </div>
+    <div class="quick-download">
+      <a href="https://github.com/AaryanChoube/AISC-Practical-Exam-Kit/archive/refs/heads/main.zip" target="_blank" class="btn-zip">⬇️ Download Kit (ZIP)</a>
+      <a href="./AISC_ALL_CODES_ULTRA_COMPACT_POCKET_PRINT.pdf" target="_blank" style="display:block; margin-top:8px; text-align:center; padding:7px; background:#10b981; color:#022c22; font-weight:bold; font-size:0.8rem; border-radius:4px; text-decoration:none;">📱 Pocket Print (DAA Style 2-Page PDF)</a>
+      <a href="./AISC_ALL_CODES_MACRO_PRINT.pdf" target="_blank" style="display:block; margin-top:6px; text-align:center; padding:7px; background:#38bdf8; color:#0f172a; font-weight:bold; font-size:0.8rem; border-radius:4px; text-decoration:none;">📄 Readable Macro Sheet (7pt PDF)</a>
+      <a href="./AISC_MASTER_VIVA_ORAL_GUIDE.pdf" target="_blank" style="display:block; margin-top:6px; text-align:center; padding:7px; background:#f59e0b; color:#0f172a; font-weight:bold; font-size:0.8rem; border-radius:4px; text-decoration:none;">🌟 Master Viva Guide (25 Q&A PDF)</a>
+      <p style="text-align: center; font-size: 0.72rem; color: var(--text-muted); margin-top: 8px;">Zero Login • Direct on Lab PC</p>
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- TAB: MASTER VIVA GUIDE -->
+    <div id="tab-viva" class="panel active">
+      <div class="header-bar">
+        <div>
+          <h2>🌟 AISC Master Viva & Oral Exam Guide</h2>
+          <p>25 Comprehensive Q&As covering Agents, Heuristics, Minimax, Neural Nets, PROLOG & Fuzzy Logic</p>
+        </div>
+      </div>
+      <div class="card">
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 14px; border-radius: 6px; margin-bottom: 20px;">
+          <strong style="color: #10b981;">💡 Quick Viva Cheat Sheet:</strong>
+          <ul style="margin: 8px 0 0 16px; font-size: 0.9rem;">
+            <li><strong>Water Jug Problem:</strong> Solvable iff $d \pmod{\gcd(J_1, J_2)} == 0$. BFS guarantees minimum pours!</li>
+            <li><strong>Minimax & Alpha-Beta:</strong> Zero-sum game tree. Prunes subtree when $\beta \le \alpha$.</li>
+            <li><strong>A* Search:</strong> $f(n) = g(n) + h(n)$. Heuristic is <em>Admissible</em> if $h(n) \le h^*(n)$ (never overestimates). Guarantees optimal path!</li>
+            <li><strong>Perceptron:</strong> Weights update: $w_i \leftarrow w_i + \eta (y - \hat{y}) x_i$. Fails on XOR because XOR is non-linearly separable!</li>
+            <li><strong>Fuzzy Operations:</strong> Union = $\max$, Intersection = $\min$, Complement = $1 - \mu$. Defuzzification uses Centroid.</li>
+          </ul>
+        </div>
+        <pre style="white-space: pre-wrap; font-family: inherit; font-size: 0.95rem; background: transparent; border: none; max-height: none;"># Artificial Intelligence & Soft Computing (AISC) Master Viva & Oral Exam Guide
+### Prepared for 5th Semester Lab Exam | Aaryan Choube (24CE1045) | Batch A/A1
+
+---
+
+## 🤖 MODULE 1: AI AGENTS & PEAS FRAMEWORK (EXPERIMENT 1)
+
+### Q1: What is an AI Agent? What is an Agent Function vs Agent Program?
+- **Agent:** Anything that perceives its environment through **sensors** and acts upon that environment through **actuators**.
+- **Agent Function:** Mathematical mapping from percept sequence to action: $f: P^* \rightarrow A$. (Abstract specification).
+- **Agent Program:** Concrete software implementation of the agent function executing on a physical architecture.
+
+### Q2: What is the PEAS framework? Specify PEAS for an Automated / Self-Driving Car.
+- **PEAS:** Performance measure, Environment, Actuators, Sensors.
+- **For Automated Car:**
+  - **P (Performance):** Passenger safety, speed, legality, comfort, fuel efficiency.
+  - **E (Environment):** Roads, vehicles, pedestrians, weather conditions, traffic signals.
+  - **A (Actuators):** Steering wheel, accelerator, brakes, horn, turn signals.
+  - **S (Sensors):** Video cameras, LiDAR, radar, GPS, speedometer, accelerometer.
+
+### Q3: What are the different dimensions of Agent Environments?
+1. **Fully Observable vs Partially Observable:** Full access to complete world state at any time vs incomplete/noisy sensor data.
+2. **Deterministic vs Stochastic:** Next state is completely determined by current state and agent action vs random/probabilistic outcomes.
+3. **Episodic vs Sequential:** Current decision does not affect future decisions vs current actions alter all future choices.
+4. **Static vs Dynamic:** Environment does not change while agent is deliberating vs changes concurrently.
+5. **Discrete vs Continuous:** Finite, clearly defined states and time steps vs infinitely continuous states/time.
+6. **Single-Agent vs Multi-Agent:** Only one agent operating vs multiple interacting/competing agents.
+
+---
+
+## 🚰 MODULE 2: STATE SPACE SEARCH & WATER JUG PROBLEM (EXPERIMENT 2)
+
+### Q4: Formulate the Water Jug problem as a State Space Search.
+- **State Representation:** An ordered pair $(x, y)$ where $x \in [0, J_1]$ is water in Jug 1, and $y \in [0, J_2]$ is water in Jug 2.
+- **Initial State:** $(0, 0)$ (both jugs empty).
+- **Goal State:** $(d, \cdot)$ or $(\cdot, d)$ where $d$ is the target amount (e.g. 2 gallons).
+- **Operators / Production Rules:**
+  1. Fill Jug 1: $(x, y) \rightarrow (J_1, y)$
+  2. Fill Jug 2: $(x, y) \rightarrow (x, J_2)$
+  3. Empty Jug 1: $(x, y) \rightarrow (0, y)$
+  4. Empty Jug 2: $(x, y) \rightarrow (x, 0)$
+  5. Pour Jug 1 into Jug 2 until full: $(x, y) \rightarrow (x - (J_2 - y), J_2)$
+  6. Pour Jug 2 into Jug 1 until full: $(x, y) \rightarrow (J_1, y - (J_1 - x))$
+  7. Pour all Jug 1 into Jug 2: $(x, y) \rightarrow (0, x + y)$
+  8. Pour all Jug 2 into Jug 1: $(x, y) \rightarrow (x + y, 0)$
+
+### Q5: What is the mathematical condition for the Water Jug Problem to be solvable?
+- **Theorem:** The problem is solvable if and only if the desired quantity $d$ is a multiple of the greatest common divisor of the capacities:
+  $$d \le \max(J_1, J_2) \quad \text{and} \quad d \pmod{\gcd(J_1, J_2)} == 0$$
+- *Example:* For $J_1 = 4, J_2 = 3$, $\gcd(4, 3) = 1$. Since $2 \pmod 1 == 0$, 2 gallons is solvable!
+
+### Q6: Why is Breadth-First Search (BFS) preferred over Depth-First Search (DFS) for Water Jug?
+- BFS visits nodes level-by-level using a FIFO queue.
+- It **guarantees finding the solution with the minimum number of pours/steps**.
+- DFS may get trapped in an infinite cycle or follow a long sub-optimal path.
+
+---
+
+## 🎮 MODULE 3: GAME PLAYING & MINIMAX ALGORITHM (EXPERIMENT 3)
+
+### Q7: What is the Minimax Algorithm? What game characteristics does it require?
+- An adversarial game-tree search algorithm for **two-player, zero-sum, deterministic, perfect-information** turn-based games (like Tic-Tac-Toe, Chess).
+- **MAX player:** Attempts to maximize the utility score (e.g., $+10$ for win).
+- **MIN player:** Attempts to minimize MAX's score (e.g., $-10$ for loss).
+- Backtracks leaf evaluations up the tree by choosing $\max$ at MAX levels and $\min$ at MIN levels.
+
+### Q8: What is the Time and Space Complexity of Minimax?
+- **Time Complexity:** $O(b^m)$ where $b$ is the branching factor and $m$ is maximum tree depth.
+- **Space Complexity:** $O(bm)$ (using Depth-First Search).
+
+### Q9: What is Alpha-Beta Pruning? Under what mathematical condition is a branch pruned?
+- An optimization technique that eliminates subtrees without altering the final minimax decision.
+- **$\alpha$ (Alpha):** The best (maximum) value MAX is guaranteed so far (initially $-\infty$).
+- **$\beta$ (Beta):** The best (minimum) value MIN is guaranteed so far (initially $+\infty$).
+- **Pruning Condition:** Prune when $\beta \le \alpha$. Any further exploration cannot change the ancestor's minimax choice.
+- **Optimal Time Complexity:** With ideal move ordering, time complexity reduces from $O(b^m)$ to $O(b^{m/2})$.
+
+---
+
+## 🧭 MODULE 4: INFORMED HEURISTIC SEARCH & A* SEARCH (EXPERIMENT 5)
+
+### Q10: What is the difference between Uninformed and Informed Search?
+- **Uninformed (Blind) Search:** Has no information about how close a state is to the goal (e.g., BFS, DFS). Explores systematically.
+- **Informed (Heuristic) Search:** Uses domain-specific heuristic knowledge $h(n)$ to estimate remaining distance to the goal, drastically reducing state exploration.
+
+### Q11: Explain the A* Search evaluation function: $f(n) = g(n) + h(n)$.
+- **$g(n)$:** The exact cost accumulated from the start node to current node $n$.
+- **$h(n)$:** The estimated (heuristic) cost from node $n$ to the goal.
+- **$f(n)$:** Total estimated cost of the cheapest solution path through node $n$.
+- A* expands the node with the lowest $f(n)$ value from the Priority Queue (Open List).
+
+### Q12: What is an Admissible Heuristic? Why is it mandatory in A*?
+- **Definition:** A heuristic is admissible if it **never overestimates** the true cost to reach the goal:
+  $$h(n) \le h^*(n) \quad \forall n$$
+  where $h^*(n)$ is the true optimal cost.
+- **Significance:** Admissibility guarantees that A* tree search is **complete and optimal** (always returns the shortest path).
+
+### Q13: What is a Consistent (Monotonic) Heuristic?
+- **Definition:** A heuristic is consistent if for every node $n$ and every successor $n'$ generated by action $a$:
+  $$h(n) \le c(n, a, n') + h(n')$$
+  (satisfies the triangle inequality).
+- Consistency implies admissibility. With consistency, the first time A* visits a state, it is guaranteed to be on the optimal path.
+
+### Q14: How does A* behave when $h(n) = 0$ or $g(n) = 0$?
+- If $h(n) = 0$: $f(n) = g(n) \implies$ Becomes **Dijkstra's Algorithm / Uniform Cost Search (UCS)**.
+- If $g(n) = 0$: $f(n) = h(n) \implies$ Becomes **Greedy Best-First Search** (fast, but sub-optimal).
+
+---
+
+## 📜 MODULE 5: LOGIC PROGRAMMING & PROLOG (EXPERIMENT 6)
+
+### Q15: What is PROLOG? What logic paradigm does it use?
+- PROLOG (Programming in Logic) is a declarative logic programming language.
+- Based on **First-Order Predicate Calculus** restricted to **Horn Clauses** (clauses with at most one positive literal).
+- Instead of writing step-by-step algorithms, programmer declares **Facts** and **Rules**, and asks **Queries**.
+
+### Q16: How does the PROLOG execution engine work?
+- Uses **Resolution Refutation** with **Unification** and **Backtracking** (Depth-First Search).
+- **Unification:** The algorithmic process of finding a set of variable bindings that makes two terms identical.
+
+### Q17: What is the Cut operator (`!`) in PROLOG? Distinguish Green Cut vs Red Cut.
+- **Cut (`!`):** A built-in predicate that commits the system to all choices made since the parent goal was invoked, preventing backtracking.
+- **Green Cut:** Only improves performance without changing the set of answers/solutions returned.
+- **Red Cut:** Changes the declarative meaning and the solutions produced by the program.
+
+---
+
+## 🧠 MODULE 6: NEURAL NETWORKS & PERCEPTRON (EXPERIMENT 10)
+
+### Q18: What is the McCulloch-Pitts Neuron Model?
+- The earliest computational model of a biological neuron (1943).
+- Has binary inputs $x_i \in \{0, 1\}$, fixed excitatory weights $+1$, and inhibitory inputs.
+- Fires ($1$) if sum of excitatory inputs $\ge \theta$ (threshold) and no inhibitory input is active.
+
+### Q19: Explain the Single-Layer Perceptron (SLP) and its Learning Rule.
+- Introduced by Frank Rosenblatt (1958). Has learnable weights $w_i$ and a bias $b$.
+- Net input: $z = \sum w_i x_i + b$. Output: $y = 1$ if $z \ge 0$, else $0$.
+- **Perceptron Learning Rule:**
+  $$w_i \leftarrow w_i + \eta (y_{\text{target}} - y_{\text{actual}}) x_i$$
+  where $\eta$ is the learning rate ($0 &lt; \eta \le 1$).
+
+### Q20: What is Linear Separability? Why does a Single-Layer Perceptron fail on XOR?
+- **Linear Separability:** Data classes can be separated by a single straight line (in 2D) or hyperplane (in $n$D).
+- **AND and OR** are linearly separable.
+- **XOR (Exclusive-OR)** is NOT linearly separable: points $(0,1)$ and $(1,0)$ require class 1, while $(0,0)$ and $(1,1)$ require class 0. No single line can separate them! Hence SLP fails on XOR (Minsky & Papert, 1969).
+
+### Q21: How does a Multi-Layer Perceptron (MLP) solve the XOR problem?
+- MLP introduces one or more **Hidden Layers** with non-linear activation functions (Sigmoid, ReLU).
+- The hidden layer maps the non-linearly separable inputs into a transformed feature space where they become linearly separable.
+- Trained using the **Backpropagation Algorithm** (Gradient Descent with chain rule).
+
+---
+
+## 🌫️ MODULE 7: FUZZY LOGIC & FUZZY SETS (EXPERIMENT 7)
+
+### Q22: What is the fundamental difference between Crisp Sets and Fuzzy Sets?
+- **Crisp Set:** Binary boundary. An element either belongs or does not belong: $\mu_A(x) \in \{0, 1\}$.
+- **Fuzzy Set:** Gradual boundary. An element has a degree of membership between 0 and 1: $\mu_A(x) \in [0, 1]$.
+
+### Q23: Define standard Fuzzy Set Operations (Union, Intersection, Complement).
+- **Fuzzy Union ($A \cup B$):** Maximum membership:
+  $$\mu_{A \cup B}(x) = \max(\mu_A(x), \mu_B(x))$$
+- **Fuzzy Intersection ($A \cap B$):** Minimum membership:
+  $$\mu_{A \cap B}(x) = \min(\mu_A(x), \mu_B(x))$$
+- **Fuzzy Complement ($\bar{A}$):** Difference from 1:
+  $$\mu_{\bar{A}}(x) = 1 - \mu_A(x)$$
+
+### Q24: What is Fuzzy Max-Min Composition?
+- Given fuzzy relations $R(X, Y)$ and $S(Y, Z)$, their composition $T = R \circ S$ is:
+  $$\mu_T(x, z) = \max_{y \in Y} \left( \min(\mu_R(x, y), \mu_S(y, z)) \right)$$
+
+### Q25: What is Defuzzification? Explain the Centroid Method.
+- **Defuzzification:** The mathematical process of converting a fuzzy set / membership distribution into a single crisp scalar value.
+- **Centroid Method (Center of Gravity / COG):** Finds the balance point of the fuzzy area:
+  $$z^* = \frac{\sum z \cdot \mu(z)}{\sum \mu(z)} \quad \left( \text{or } \frac{\int z \mu(z) dz}{\int \mu(z) dz} \right)$$
+  Most widely used defuzzification method due to intuitive physical meaning.
+</pre>
+      </div>
+    </div>
+
+    <!-- TAB: EXP 1 -->
+    <div id="tab-e1" class="panel">
+      <div class="header-bar">
+        <div>
+          <h2>🤖 Experiment 1: PEAS Description for AI Agents</h2>
+          <p>Performance Measure, Environment, Actuators, Sensors for Task Environments</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>PEAS Framework Specifications</h3>
+        <div class="code-box"><pre>PEAS FRAMEWORK FOR AI AGENTS (EXPERIMENT 1)
+=================================================
+PEAS stands for Performance Measure, Environment, Actuators, Sensors.
+
+1. AUTOMATED / SELF-DRIVING CAR:
+   - Performance: Safety, speed, legal drive, passenger comfort, fuel efficiency.
+   - Environment: Roads, other vehicles, pedestrians, weather, traffic signs.
+   - Actuators: Steering wheel, accelerator, brakes, horn, turn signals.
+   - Sensors: Cameras, LiDAR, radar, GPS, speedometer, odometer, engine sensors.
+   - Properties: Partially observable, Stochastic, Sequential, Dynamic, Continuous, Multi-agent.
+
+2. MEDICAL DIAGNOSIS SYSTEM:
+   - Performance: Healthy patient, minimized treatment costs, diagnostic accuracy.
+   - Environment: Patient symptoms, medical history, lab test results, hospital staff.
+   - Actuators: Screen display of diagnosis, recommended prescriptions, test orders.
+   - Sensors: Keyboard input of symptoms, lab test data feeds.
+   - Properties: Partially observable, Stochastic, Sequential, Dynamic, Continuous, Single-agent.
+
+3. VACUUM CLEANER AGENT:
+   - Performance: Cleanliness percentage, energy consumed, cleaning time, noise.
+   - Environment: Floor surface, dirt locations, obstacles, room boundaries.
+   - Actuators: Wheels, brush motor, suction motor.
+   - Sensors: Dirt sensor, bump/proximity sensor, infrared cliff sensor.
+   - Properties: Partially observable, Deterministic, Episodic/Sequential, Static, Discrete, Single-agent.
+
+4. PART-PICKING ROBOT:
+   - Performance: Percentage of parts in correct bins, speed.
+   - Environment: Conveyor belt with parts, bins.
+   - Actuators: Jointed robotic arm and gripper hand.
+   - Sensors: Camera, joint angle sensors.
+   - Properties: Partially observable, Stochastic, Episodic, Dynamic, Continuous, Single-agent.
+</pre></div>
+      </div>
+    </div>
+
+    <!-- TAB: EXP 2 -->
+    <div id="tab-e2" class="panel">
+      <div class="header-bar">
+        <div>
+          <h2>🚰 Experiment 2: Water Jug Problem</h2>
+          <p>BFS State Space Traversal (Java) & Recursive DFS Solver (Python)</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="badge" style="background:#0284c7; color:#fff;">JAVA IMPLEMENTATION (BFS SEARCH)</span>
+        <h3>Water Jug Solver in Java (WaterJugSolver.java)</h3>
+        <div class="code-box"><button class="copy-btn" onclick="copyCode('code-wj-j', this)">Copy Java Code</button><pre id="code-wj-j">import java.util.*;
+
+public class WaterJugSolver {
+    static class State {
+        int x, y;
+        List&lt;String&gt; path;
+
+        State(int x, int y, List&lt;String&gt; path) {
+            this.x = x;
+            this.y = y;
+            this.path = new ArrayList&lt;&gt;(path);
+            this.path.add("(" + x + ", " + y + ")");
+        }
+    }
+
+    public static void solveBFS(int jug1, int jug2, int target) {
+        System.out.println("\nSolving Water Jug Problem using BFS (Shortest Path):");
+        System.out.println("Jug 1 Capacity: " + jug1 + "L | Jug 2 Capacity: " + jug2 + "L | Target: " + target + "L");
+
+        if (target &gt; Math.max(jug1, jug2) || target % gcd(jug1, jug2) != 0) {
+            System.out.println("Target cannot be measured according to Bezout's identity.");
+            return;
+        }
+
+        Queue&lt;State&gt; queue = new LinkedList&lt;&gt;();
+        boolean[][] visited = new boolean[jug1 + 1][jug2 + 1];
+
+        queue.add(new State(0, 0, new ArrayList&lt;&gt;()));
+        visited[0][0] = true;
+
+        while (!queue.isEmpty()) {
+            State current = queue.poll();
+
+            if (current.x == target || current.y == target) {
+                System.out.println("\nGoal State Reached!");
+                System.out.println("Steps to solution (" + (current.path.size() - 1) + " operations):");
+                for (int i = 0; i &lt; current.path.size(); i++) {
+                    System.out.println("Step " + i + ": " + current.path.get(i));
+                }
+                return;
+            }
+
+            List&lt;int[]&gt; nextStates = new ArrayList&lt;&gt;();
+            nextStates.add(new int[]{jug1, current.y}); // Fill Jug 1
+            nextStates.add(new int[]{current.x, jug2}); // Fill Jug 2
+            nextStates.add(new int[]{0, current.y});    // Empty Jug 1
+            nextStates.add(new int[]{current.x, 0});    // Empty Jug 2
+
+            int pour1to2 = Math.min(current.x, jug2 - current.y);
+            nextStates.add(new int[]{current.x - pour1to2, current.y + pour1to2});
+
+            int pour2to1 = Math.min(current.y, jug1 - current.x);
+            nextStates.add(new int[]{current.x + pour2to1, current.y - pour2to1});
+
+            for (int[] next : nextStates) {
+                int nx = next[0], ny = next[1];
+                if (!visited[nx][ny]) {
+                    visited[nx][ny] = true;
+                    queue.add(new State(nx, ny, current.path));
+                }
+            }
+        }
+        System.out.println("No solution exists.");
+    }
+
+    private static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("========================================");
+        System.out.println("   Water Jug Problem Solver (AISC Exp 2)");
+        System.out.println("========================================");
+        System.out.println("1. Use default: Jug1 = 4L, Jug2 = 3L, Target = 2L");
+        System.out.println("2. Enter custom values");
+        System.out.print("Enter choice (1/2): ");
+
+        int choice = 1;
+        if (sc.hasNextInt()) {
+            choice = sc.nextInt();
+        }
+
+        int j1 = 4, j2 = 3, target = 2;
+        if (choice == 2) {
+            System.out.print("Enter capacity of Jug 1: ");
+            j1 = sc.nextInt();
+            System.out.print("Enter capacity of Jug 2: ");
+            j2 = sc.nextInt();
+            System.out.print("Enter target amount: ");
+            target = sc.nextInt();
+        }
+
+        solveBFS(j1, j2, target);
+        System.out.println("========================================");
+    }
+}
+</pre></div>
+        
+        <span class="badge" style="background:#475569; color:#fff; margin-top:20px;">PYTHON IMPLEMENTATION</span>
+        <h3>Water Jug Solver in Python (water_jug.py)</h3>
+        <div class="code-box"><button class="copy-btn" onclick="copyCode('code-wj-py', this)">Copy Python Code</button><pre id="code-wj-py"># Water Jug Problem Solver (Python Recursive DFS / State Search)
+from collections import defaultdict
+
+jug1, jug2, aim = 4, 3, 2
+visited = defaultdict(lambda: False)
+
+def waterJugSolver(amt1, amt2):
+    if amt1 == aim and amt2 == 0:
+        print(f"Reached goal state: ({amt1}, {amt2})")
+        return True
+
+    if not visited[(amt1, amt2)]:
+        print(f"Current state: ({amt1}, {amt2})")
+        visited[(amt1, amt2)] = True
+
+        return (waterJugSolver(0, amt2) or                       # Empty Jug 1
+                waterJugSolver(amt1, 0) or                       # Empty Jug 2
+                waterJugSolver(jug1, amt2) or                    # Fill Jug 1
+                waterJugSolver(amt1, jug2) or                    # Fill Jug 2
+                waterJugSolver(amt1 + min(amt2, (jug1 - amt1)),   # Pour Jug 2 -&gt; Jug 1
+                               amt2 - min(amt2, (jug1 - amt1))) or
+                waterJugSolver(amt1 - min(amt1, (jug2 - amt2)),   # Pour Jug 1 -&gt; Jug 2
+                               amt2 + min(amt1, (jug2 - amt2))))
+    else:
+        return False
+
+print("Steps to solve 4-Gallon and 3-Gallon Jug problem for target 2 Gallons:")
+waterJugSolver(0, 0)
+</pre></div>
+      </div>
+    </div>
+
+    <!-- TAB: EXP 3 -->
+    <div id="tab-e3" class="panel">
+      <div class="header-bar">
+        <div>
+          <h2>🎮 Experiment 3: Tic-Tac-Toe Game Playing</h2>
+          <p>Adversarial Minimax Algorithm with Optimal Move Selection</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Tic-Tac-Toe Minimax in Java (TicTacToeMinimax.java)</h3>
+        <div class="code-box"><button class="copy-btn" onclick="copyCode('code-ttt-j', this)">Copy Java Code</button><pre id="code-ttt-j">import java.util.Scanner;
+
+public class TicTacToeMinimax {
+    static final char HUMAN = 'X';
+    static final char AI = 'O';
+    static final char EMPTY = ' ';
+
+    public static void printBoard(char[][] board) {
+        System.out.println("");
+        for (int i = 0; i &lt; 3; i++) {
+            System.out.println(" " + board[i][0] + " | " + board[i][1] + " | " + board[i][2]);
+            if (i &lt; 2) System.out.println("---|---|---");
+        }
+        System.out.println("");
+    }
+
+    public static boolean isMovesLeft(char[][] board) {
+        for (int i = 0; i &lt; 3; i++)
+            for (int j = 0; j &lt; 3; j++)
+                if (board[i][j] == EMPTY) return true;
+        return false;
+    }
+
+    public static int evaluate(char[][] b) {
+        for (int row = 0; row &lt; 3; row++) {
+            if (b[row][0] == b[row][1] && b[row][1] == b[row][2]) {
+                if (b[row][0] == AI) return +10;
+                else if (b[row][0] == HUMAN) return -10;
+            }
+        }
+        for (int col = 0; col &lt; 3; col++) {
+            if (b[0][col] == b[1][col] && b[1][col] == b[2][col]) {
+                if (b[0][col] == AI) return +10;
+                else if (b[0][col] == HUMAN) return -10;
+            }
+        }
+        if (b[0][0] == b[1][1] && b[1][1] == b[2][2]) {
+            if (b[0][0] == AI) return +10;
+            else if (b[0][0] == HUMAN) return -10;
+        }
+        if (b[0][2] == b[1][1] && b[1][1] == b[2][0]) {
+            if (b[0][2] == AI) return +10;
+            else if (b[0][2] == HUMAN) return -10;
+        }
+        return 0;
+    }
+
+    public static int minimax(char[][] board, int depth, boolean isMax) {
+        int score = evaluate(board);
+        if (score == 10) return score - depth;
+        if (score == -10) return score + depth;
+        if (!isMovesLeft(board)) return 0;
+
+        if (isMax) {
+            int best = -1000;
+            for (int i = 0; i &lt; 3; i++) {
+                for (int j = 0; j &lt; 3; j++) {
+                    if (board[i][j] == EMPTY) {
+                        board[i][j] = AI;
+                        best = Math.max(best, minimax(board, depth + 1, false));
+                        board[i][j] = EMPTY;
+                    }
+                }
+            }
+            return best;
+        } else {
+            int best = 1000;
+            for (int i = 0; i &lt; 3; i++) {
+                for (int j = 0; j &lt; 3; j++) {
+                    if (board[i][j] == EMPTY) {
+                        board[i][j] = HUMAN;
+                        best = Math.min(best, minimax(board, depth + 1, true));
+                        board[i][j] = EMPTY;
+                    }
+                }
+            }
+            return best;
+        }
+    }
+
+    public static int[] findBestMove(char[][] board) {
+        int bestVal = -1000;
+        int[] bestMove = {-1, -1};
+        for (int i = 0; i &lt; 3; i++) {
+            for (int j = 0; j &lt; 3; j++) {
+                if (board[i][j] == EMPTY) {
+                    board[i][j] = AI;
+                    int moveVal = minimax(board, 0, false);
+                    board[i][j] = EMPTY;
+                    if (moveVal &gt; bestVal) {
+                        bestMove[0] = i;
+                        bestMove[1] = j;
+                        bestVal = moveVal;
+                    }
+                }
+            }
+        }
+        return bestMove;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("========================================");
+        System.out.println("  Tic-Tac-Toe Minimax Agent (AISC Exp 3)");
+        System.out.println("========================================");
+        System.out.println("You are 'X' and AI is 'O'. Position numbers 1 to 9:");
+        System.out.println(" 1 | 2 | 3 ");
+        System.out.println("---|---|---");
+        System.out.println(" 4 | 5 | 6 ");
+        System.out.println("---|---|---");
+        System.out.println(" 7 | 8 | 9 ");
+
+        char[][] board = {
+            {' ', ' ', ' '},
+            {' ', ' ', ' '},
+            {' ', ' ', ' '}
+        };
+
+        System.out.println("\nAI calculating optimal response if Human plays center (pos 5):");
+        board[1][1] = HUMAN;
+        printBoard(board);
+
+        int[] aiMove = findBestMove(board);
+        System.out.println("Minimax AI selects row " + aiMove[0] + ", col " + aiMove[1] + " (Optimal Corner response)");
+        board[aiMove[0]][aiMove[1]] = AI;
+        printBoard(board);
+
+        System.out.println("Strategy: Minimax Decision Tree (Adversarial Search)");
+        System.out.println("Result: AI is theoretically unbeatable (always wins or draws).");
+        System.out.println("========================================");
+    }
+}
+</pre></div>
+      </div>
+    </div>
+
+    <!-- TAB: EXP 5 -->
+    <div id="tab-e5" class="panel">
+      <div class="header-bar">
+        <div>
+          <h2>🧭 Experiment 5: Informed Heuristic Search (A* Algorithm)</h2>
+          <p>Shortest Path Graph Traversal evaluating f(n) = g(n) + h(n)</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>A* Search Algorithm in Java (AStarSearch.java)</h3>
+        <div class="code-box"><button class="copy-btn" onclick="copyCode('code-astar-j', this)">Copy Java Code</button><pre id="code-astar-j">import java.util.*;
+
+public class AStarSearch {
+    static class Node implements Comparable&lt;Node&gt; {
+        int id;
+        int g;
+        int h;
+        int f;
+        Node parent;
+
+        Node(int id, int g, int h, Node parent) {
+            this.id = id;
+            this.g = g;
+            this.h = h;
+            this.f = g + h;
+            this.parent = parent;
+        }
+
+        public int compareTo(Node o) {
+            return Integer.compare(this.f, o.f);
+        }
+    }
+
+    static class Edge {
+        int target, weight;
+        Edge(int target, int weight) {
+            this.target = target;
+            this.weight = weight;
+        }
+    }
+
+    public static void runAStar(Map&lt;Integer, List&lt;Edge&gt;&gt; graph, int[] heuristics, int start, int goal) {
+        PriorityQueue&lt;Node&gt; openList = new PriorityQueue&lt;&gt;();
+        Map&lt;Integer, Integer&gt; bestG = new HashMap&lt;&gt;();
+
+        openList.add(new Node(start, 0, heuristics[start], null));
+        bestG.put(start, 0);
+
+        System.out.println("\n--- A* Search Node Expansion ---");
+        System.out.println("Node\tg(n)\th(n)\tf(n)");
+
+        while (!openList.isEmpty()) {
+            Node current = openList.poll();
+            System.out.printf("N%d\t%d\t%d\t%d\n", current.id, current.g, current.h, current.f);
+
+            if (current.id == goal) {
+                System.out.println("\nGoal Node " + goal + " reached with optimal cost: " + current.g);
+                printPath(current);
+                return;
+            }
+
+            for (Edge edge : graph.getOrDefault(current.id, Collections.emptyList())) {
+                int newG = current.g + edge.weight;
+                int neighbor = edge.target;
+
+                if (!bestG.containsKey(neighbor) || newG &lt; bestG.get(neighbor)) {
+                    bestG.put(neighbor, newG);
+                    openList.add(new Node(neighbor, newG, heuristics[neighbor], current));
+                }
+            }
+        }
+        System.out.println("Goal node is unreachable.");
+    }
+
+    private static void printPath(Node goalNode) {
+        List&lt;Integer&gt; path = new ArrayList&lt;&gt;();
+        Node curr = goalNode;
+        while (curr != null) {
+            path.add(curr.id);
+            curr = curr.parent;
+        }
+        Collections.reverse(path);
+        System.out.print("Optimal Path: ");
+        for (int i = 0; i &lt; path.size(); i++) {
+            System.out.print("N" + path.get(i) + (i &lt; path.size() - 1 ? " -&gt; " : ""));
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("========================================");
+        System.out.println("      A* Search Algorithm (AISC Exp 4)");
+        System.out.println("========================================");
+
+        int[] heuristics = {10, 8, 5, 7, 3, 0};
+        Map&lt;Integer, List&lt;Edge&gt;&gt; graph = new HashMap&lt;&gt;();
+        for (int i = 0; i &lt; 6; i++) graph.put(i, new ArrayList&lt;&gt;());
+
+        graph.get(0).add(new Edge(1, 2));
+        graph.get(0).add(new Edge(2, 4));
+        graph.get(1).add(new Edge(3, 7));
+        graph.get(1).add(new Edge(4, 3));
+        graph.get(2).add(new Edge(4, 1));
+        graph.get(3).add(new Edge(5, 5));
+        graph.get(4).add(new Edge(5, 4));
+
+        System.out.println("Graph configured with Start = N0, Goal = N5");
+        System.out.println("Heuristics h(n): N0=10, N1=8, N2=5, N3=7, N4=3, N5=0");
+
+        runAStar(graph, heuristics, 0, 5);
+        System.out.println("Evaluation Function: f(n) = g(n) + h(n)");
+        System.out.println("Optimality: A* is optimal if heuristic h(n) is admissible (never overestimates).");
+        System.out.println("========================================");
+    }
+}
+</pre></div>
+      </div>
+    </div>
+
+    <!-- TAB: EXP 6 -->
+    <div id="tab-e6" class="panel">
+      <div class="header-bar">
+        <div>
+          <h2>📜 Experiment 6: Logic Programming in PROLOG</h2>
+          <p>First-Order Predicate Logic, Horn Clauses, Family Tree & Temperature Rules</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>PROLOG Knowledge Base Rules (family_and_weather.pl)</h3>
+        <div class="code-box"><button class="copy-btn" onclick="copyCode('code-pl', this)">Copy PROLOG Code</button><pre id="code-pl">% EXPERIMENT 6: PROLOG LOGIC PROGRAMMING
+% ======================================
+
+% --- WEATHER RULES ---
+weather(phoenix, summer, hot).
+weather(la, summer, warm).
+weather(phoenix, winter, warm).
+
+warmer_than(C1, C2) :-
+    weather(C1, summer, hot),
+    weather(C2, summer, warm).
+
+% --- FAMILY TREE RULES ---
+parent(joe, jane).
+parent(harry, carl).
+parent(meg, jane).
+parent(jane, anne).
+parent(carl, ralph).
+parent(hazel, harry).
+
+grandparent(X, Z) :-
+    parent(X, Y),
+    parent(Y, Z).
+
+ancestor(X, Y) :- parent(X, Y).
+ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
+
+% --- TEMPERATURE CONVERSION ---
+centigrade_to_fahrenheit(C, F) :-
+    F is (C * 9 / 5) + 32.
+
+is_below_freezing(C) :-
+    C &lt; 0.
+</pre></div>
+      </div>
+    </div>
+
+    <!-- TAB: EXP 7 -->
+    <div id="tab-e7" class="panel">
+      <div class="header-bar">
+        <div>
+          <h2>🌫️ Experiment 7: Fuzzy Set Operations</h2>
+          <p>Fuzzy Union (Max), Intersection (Min), Complement (1-mu)</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Fuzzy Set Operations in Java (FuzzyOperations.java)</h3>
+        <div class="code-box"><button class="copy-btn" onclick="copyCode('code-fuzz-j', this)">Copy Java Code</button><pre id="code-fuzz-j">import java.util.Scanner;
+
+public class FuzzyOperations {
+    public static void printSet(String name, double[] set) {
+        System.out.print(name + " = { ");
+        for (int i = 0; i &lt; set.length; i++) {
+            System.out.printf("%.2f/x%d", set[i], (i + 1));
+            if (i &lt; set.length - 1) System.out.print(", ");
+        }
+        System.out.println(" }");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("========================================");
+        System.out.println("      Fuzzy Set Operations (AISC Exp 8)");
+        System.out.println("========================================");
+
+        double[] A = {0.2, 0.5, 0.8, 1.0};
+        double[] B = {0.6, 0.4, 0.7, 0.1};
+
+        printSet("Fuzzy Set A", A);
+        printSet("Fuzzy Set B", B);
+
+        int n = A.length;
+        double[] union = new double[n];
+        double[] intersection = new double[n];
+        double[] compA = new double[n];
+        double[] compB = new double[n];
+        double[] diffAB = new double[n];
+
+        for (int i = 0; i &lt; n; i++) {
+            union[i] = Math.max(A[i], B[i]);
+            intersection[i] = Math.min(A[i], B[i]);
+            compA[i] = 1.0 - A[i];
+            compB[i] = 1.0 - B[i];
+            diffAB[i] = Math.min(A[i], 1.0 - B[i]);
+        }
+
+        System.out.println("\n--- Standard Fuzzy Operations ---");
+        printSet("Union (A ∪ B)        [max]", union);
+        printSet("Intersection (A ∩ B) [min]", intersection);
+        printSet("Complement (A')      [1 - A]", compA);
+        printSet("Difference (A - B)   [A ∩ B']", diffAB);
+
+        System.out.println("\n--- Cartesian Product (A × B) ---");
+        double[][] cartesian = new double[n][n];
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; n; j++) {
+                cartesian[i][j] = Math.min(A[i], B[j]);
+                System.out.printf("%.2f\t", cartesian[i][j]);
+            }
+            System.out.println();
+        }
+
+        System.out.println("\n--- Max-Min Composition Demo ---");
+        double[][] R = {{0.3, 0.7}, {0.8, 0.4}};
+        double[][] S = {{0.5, 0.9}, {0.6, 0.2}};
+        double[][] T = new double[2][2];
+
+        for (int i = 0; i &lt; 2; i++) {
+            for (int j = 0; j &lt; 2; j++) {
+                double maxVal = 0.0;
+                for (int k = 0; k &lt; 2; k++) {
+                    maxVal = Math.max(maxVal, Math.min(R[i][k], S[k][j]));
+                }
+                T[i][j] = maxVal;
+            }
+        }
+
+        System.out.println("Composition Matrix T = R ∘ S:");
+        for (int i = 0; i &lt; 2; i++) {
+            for (int j = 0; j &lt; 2; j++) {
+                System.out.printf("%.2f\t", T[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println("========================================");
+    }
+}
+</pre></div>
+      </div>
+    </div>
+
+    <!-- TAB: EXP 10 -->
+    <div id="tab-e10" class="panel">
+      <div class="header-bar">
+        <div>
+          <h2>🧠 Experiment 10: Single-Layer Perceptron</h2>
+          <p>Binary Classification Neural Network & Perceptron Weight Learning Rule</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Perceptron Learning in Java (Perceptron.java)</h3>
+        <div class="code-box"><button class="copy-btn" onclick="copyCode('code-perc-j', this)">Copy Java Code</button><pre id="code-perc-j">import java.util.Scanner;
+
+public class Perceptron {
+    public static void trainPerceptron(int[][] inputs, int[] targets, String gateName) {
+        double[] weights = {0.0, 0.0};
+        double bias = 0.0;
+        double lr = 0.1;
+        int epochs = 10;
+
+        System.out.println("\n--- Training Perceptron for " + gateName + " Gate ---");
+        System.out.println("Learning Rate: " + lr);
+
+        for (int epoch = 1; epoch &lt;= epochs; epoch++) {
+            int totalError = 0;
+            for (int i = 0; i &lt; inputs.length; i++) {
+                double net = inputs[i][0] * weights[0] + inputs[i][1] * weights[1] + bias;
+                int output = (net &gt;= 0) ? 1 : 0;
+                int error = targets[i] - output;
+                totalError += Math.abs(error);
+
+                weights[0] += lr * error * inputs[i][0];
+                weights[1] += lr * error * inputs[i][1];
+                bias += lr * error;
+            }
+
+            if (totalError == 0) {
+                System.out.println("Converged at Epoch " + epoch + "!");
+                break;
+            }
+        }
+
+        System.out.printf("Final Weights: w1 = %.2f, w2 = %.2f, bias = %.2f\n", weights[0], weights[1], bias);
+        System.out.println("Verification Table:");
+        System.out.println("x1\tx2\tTarget\tPredicted\tStatus");
+        for (int i = 0; i &lt; inputs.length; i++) {
+            double net = inputs[i][0] * weights[0] + inputs[i][1] * weights[1] + bias;
+            int pred = (net &gt;= 0) ? 1 : 0;
+            System.out.println(inputs[i][0] + "\t" + inputs[i][1] + "\t" + targets[i] + "\t" + pred + "\t\t" + (pred == targets[i] ? "MATCH" : "FAIL"));
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("========================================");
+        System.out.println("   Single-Layer Perceptron (AISC Exp 6)");
+        System.out.println("========================================");
+
+        int[][] inputs = {
+            {0, 0},
+            {0, 1},
+            {1, 0},
+            {1, 1}
+        };
+
+        int[] andTargets = {0, 0, 0, 1};
+        int[] orTargets = {0, 1, 1, 1};
+
+        trainPerceptron(inputs, andTargets, "AND");
+        trainPerceptron(inputs, orTargets, "OR");
+
+        System.out.println("\nNote: SLP can solve linearly separable problems (AND, OR).");
+        System.out.println("XOR is non-linearly separable and requires Multi-Layer Perceptron (MLP).");
+        System.out.println("========================================");
+    }
+}
+</pre></div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function copyCode(elementId, btn) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = "✓ Copied!";
+        btn.style.background = "#10b981";
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = "var(--primary)";
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
