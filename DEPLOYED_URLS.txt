@@ -14,8 +14,9 @@ AISC PRACTICAL & VIVA EXAM KIT - ZERO-LOGIN URLS
    Full: https://github.com/AaryanChoube/AISC-Practical-Exam-Kit/archive/refs/heads/main.zip
 
 4. READABLE MACRO PRINT PDF (7.0 pt Consolas, 2 Columns, 1 Page):
-   https://tinyurl.com/aisc-macro
-   Full: https://github.com/AaryanChoube/AISC-Practical-Exam-Kit/raw/main/AISC_ALL_CODES_MACRO_PRINT.pdf
+   https://tinyurl.com/aisc-macro-pdf
+   (Alt: https://tinyurl.com/aisc-macro-print)
+   Full: https://raw.githubusercontent.com/AaryanChoube/AISC-Practical-Exam-Kit/main/AISC_ALL_CODES_MACRO_PRINT.pdf
 
 5. MASTER VIVA & ORAL GUIDE PDF (25 Q&A):
    https://tinyurl.com/aisc-viva
