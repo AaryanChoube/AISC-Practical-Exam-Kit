@@ -10,7 +10,8 @@ AISC PRACTICAL & VIVA EXAM KIT - ZERO-LOGIN URLS
    Full: https://aaryanchoube.github.io/AISC-Practical-Exam-Kit/
 
 3. DIRECT ZIP DOWNLOAD (All files, codes, PDFs):
-   https://tinyurl.com/aisc-kit-zip
+   https://tinyurl.com/aisc-download
+   (Alt: https://tinyurl.com/aisc-kit-zip)
    Full: https://github.com/AaryanChoube/AISC-Practical-Exam-Kit/archive/refs/heads/main.zip
 
 4. READABLE MACRO PRINT PDF (7.0 pt Consolas, 2 Columns, 3 Pages):
