@@ -1,7 +1,7 @@
 AISC PRACTICAL & VIVA EXAM KIT - ZERO-LOGIN URLS
 =====================================================
 
-1. DAA-STYLE ULTRA-COMPACT POCKET PRINT (Consolas 4.5pt, 3-Cols, 2 Pages with Viva):
+1. DAA-STYLE ULTRA-COMPACT POCKET PRINT (Consolas 4.5pt, 3-Cols, 1 Page with Quick Viva):
    https://tinyurl.com/aisc-pocket
    Full: https://github.com/AaryanChoube/AISC-Practical-Exam-Kit/raw/main/AISC_ALL_CODES_ULTRA_COMPACT_POCKET_PRINT.pdf
 
@@ -11,10 +11,9 @@ AISC PRACTICAL & VIVA EXAM KIT - ZERO-LOGIN URLS
 
 3. DIRECT ZIP DOWNLOAD (All files, codes, PDFs):
    https://tinyurl.com/aisc-download
-   (Alt: https://tinyurl.com/aisc-kit-zip)
    Full: https://github.com/AaryanChoube/AISC-Practical-Exam-Kit/archive/refs/heads/main.zip
 
-4. READABLE MACRO PRINT PDF (7.0 pt Consolas, 2 Columns, 3 Pages):
+4. READABLE MACRO PRINT PDF (7.0 pt Consolas, 2 Columns, 1 Page):
    https://tinyurl.com/aisc-macro
    Full: https://github.com/AaryanChoube/AISC-Practical-Exam-Kit/raw/main/AISC_ALL_CODES_MACRO_PRINT.pdf
 
